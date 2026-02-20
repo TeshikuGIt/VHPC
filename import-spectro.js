@@ -52,4 +52,7 @@ const config = {
       console.log("✅ Import complete");
       console.log(Object.keys(rows[0]));
     });
+
+    
+
 })();
