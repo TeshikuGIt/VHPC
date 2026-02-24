@@ -89,32 +89,14 @@ numberBtns.forEach(btn => {
 fetch('/api/data')
     .then(response => response.json())
     .then(data => {
-        const table = document.getElementById('data-table');
-        const tbody = table.querySelector('tbody') || table; // if no tbody, use table
-        // Remove existing data rows
-        const rows = tbody.querySelectorAll('tr');
-        rows.forEach(row => {
-            if (!row.querySelector('th')) { // not header row
-                row.remove();
-            }
-        });
-        // Get headers
-        const headers = Array.from(table.querySelectorAll('th')).map(th => th.textContent.trim());
-        // Add rows
-        data.forEach(row => {
-            const tr = document.createElement('tr');
-            headers.forEach((header, index) => {
-                const td = document.createElement('td');
-                if (header === 'Action') {
-                    td.className = 'action-column-buttons';
-                    td.innerHTML = '<button class="view">View</button><button class="edit">Edit</button><button class="delete">Delete</button>';
-                } else {
-                    td.textContent = row[header] || '';
-                }
-                tr.appendChild(td);
+        if (data.length > 0) {
+            const record = data[0]; // Use the first record, or modify to select specific
+            document.querySelectorAll('[data-field]').forEach(span => {
+                const field = span.dataset.field;
+                span.textContent = record[field] || 'N/A';
             });
-            tbody.appendChild(tr);
-        });
+        }
     })
     .catch(error => console.error('Error fetching data:', error));
-});
+})
+

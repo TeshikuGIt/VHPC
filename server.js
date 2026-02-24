@@ -16,7 +16,7 @@ app.use(express.static('.')); // serve static files
 app.get('/api/data', async (req, res) => {
   try {
     const connection = await mysql.createConnection(config);
-    const [rows] = await connection.execute('SELECT * FROM reading_list LIMIT 10'); // limit for demo
+    const [rows] = await connection.execute('SELECT * FROM reading_list LIMIT 20'); // limit for demo
     await connection.end();
     res.json(rows);
   } catch (error) {
