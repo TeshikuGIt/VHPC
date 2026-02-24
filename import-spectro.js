@@ -18,10 +18,24 @@ const config = {
   database: "vhptest"
 };
 
+function isValidRow(row) {
+  const cct = parseFloat(row['CCT(K)']);
+  if (!isNaN(cct) && (cct < 3000 || cct > 6000)) {
+    return { valid: false, reason: `CCT ${cct} out of range (3000-6000)` };
+  }
+  const peakSignal = parseFloat(row['Peak Signal']);
+  if (!isNaN(peakSignal) && (peakSignal < 50000 || peakSignal > 100000)) {
+    return { valid: false, reason: `Peak Signal ${peakSignal} out of range (50000-100000)` };
+  }
+  return { valid: true };
+}
+
 (async () => {
   const connection = await mysql.createConnection(config);
 
   const rows = [];
+  let discarded = 0;
+  const discardedRows = [];
 
   fs.createReadStream(file)
     .pipe(csv({
@@ -33,7 +47,13 @@ const config = {
       Object.keys(data).forEach(k => {
         if (!k) delete data[k];
       });
-      rows.push(data);
+      const validation = isValidRow(data);
+      if (validation.valid) {
+        rows.push(data);
+      } else {
+        discarded++;
+        discardedRows.push(`${data['Barcode'] || 'Unknown'}: ${validation.reason}`);
+      }
     })
     .on("end", async () => {
 
@@ -49,8 +69,12 @@ const config = {
       }
 
       await connection.end();
-      console.log("✅ Import complete");
       console.log(Object.keys(rows[0]));
+      console.log(`Imported ${rows.length} rows, discarded ${discarded} rows`);
+      if (discarded > 0) {
+        console.log(`Discarded barcodes: ${discardedRows.join(', ')}`);
+      }
+      console.log("✅ Import complete");
     });
 
     

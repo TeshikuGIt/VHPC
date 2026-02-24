@@ -36,9 +36,13 @@
         }
 
         header {
+            position: sticky;
+            top: 0;
             padding: 1rem 0;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             transition: margin-left 0.3s;
+            align-items: center;
+            display: flex;
         }
 
         #sidebar.open ~ header {
@@ -130,6 +134,42 @@
             text-align: center;
             padding: 2rem;
             margin-top: 3rem;
+        }
+
+        #data-table .view {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #00ff0d;
+            color: black;
+        }
+        #data-table .view:hover {
+            background-color: #00cc00;
+        }
+
+        #data-table .edit {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #fffb01;
+            color: black;
+        }
+        #data-table .edit:hover {
+            background-color: #dfdb04;
+        }
+
+        #data-table .delete {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #e74c3c;
+            color: black;
+        }
+        #data-table .delete:hover {
+            background-color: #c0392b;
         }
 
         /* Light mode styles */
@@ -229,3 +269,20 @@
             background-color: #333;
             color: white;
         }
+
+#data-table {
+    border-collapse: collapse;
+
+}
+
+#data-table th, #data-table td {
+    border-bottom: 2px groove black;
+    border-right: 2px groove black;
+}
+
+#data-table .action-column {
+    border-right: none;
+}
+#data-table .action-column-buttons {
+    border-right: none;
+}

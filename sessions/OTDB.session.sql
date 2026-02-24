@@ -48,6 +48,6 @@ CREATE TABLE IF NOT EXISTS reading_list (
   `Integral Time(ms)` INT,
   `Peak Signal` INT,
   `Dark Signal` INT,
-  `Compensate_level` INT,
+  `Compensate level` INT,
   `Test date` VARCHAR(50)
 );
