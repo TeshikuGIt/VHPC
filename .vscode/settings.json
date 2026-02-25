@@ -11,8 +11,8 @@
             "port": 3306,
             "driver": "MySQL",
             "name": "OTDB",
-            "username": "root",
-            "database": "vhptest"
+            "database": "fdata",
+            "username": "root"
         },
         {
             "mysqlOptions": {
@@ -24,8 +24,22 @@
             "server": "localhost",
             "port": 3306,
             "driver": "MySQL",
-            "database": "vhpdb",
             "name": "OTDB",
+            "database": "sdata",
+            "username": "root"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "OTDB",
+            "database": "vhptest",
             "username": "root"
         }
     ]

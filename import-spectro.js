@@ -15,7 +15,14 @@ const config = {
   host: "localhost",
   user: "root",
   password: "VHPTDB123",
-  database: "vhptest"
+  database: "sdata"
+};
+
+const discardedConfig = {
+  host: "localhost",
+  user: "root",
+  password: "VHPTDB123",
+  database: "fdata"
 };
 
 function isValidRow(row) {
@@ -32,10 +39,12 @@ function isValidRow(row) {
 
 (async () => {
   const connection = await mysql.createConnection(config);
+  const discardedConnection = await mysql.createConnection(discardedConfig);
 
   const rows = [];
   let discarded = 0;
   const discardedRows = [];
+  const discardedLog = [];
 
   fs.createReadStream(file)
     .pipe(csv({
@@ -52,7 +61,8 @@ function isValidRow(row) {
         rows.push(data);
       } else {
         discarded++;
-        discardedRows.push(`${data['Barcode'] || 'Unknown'}: ${validation.reason}`);
+        discardedRows.push({ ...data, discard_reason: validation.reason });
+        discardedLog.push(`${data['Barcode'] || 'Unknown'}: ${validation.reason}`);
       }
     })
     .on("end", async () => {
@@ -68,11 +78,27 @@ function isValidRow(row) {
         await connection.execute(sql, validCols.map(c => row[c]));
       }
 
+      // Handle discarded rows
+      if (discardedRows.length > 0) {
+        const discardedCols = [...validCols, 'discard_reason'];
+        const discardedColsStr = discardedCols.map(c => `\`${c}\``).join(", ");
+        const discardedPlaceholders = discardedCols.map(() => "?").join(", ");
+
+        const createDiscardedTableSql = `CREATE TABLE IF NOT EXISTS discarded_readings (${discardedCols.map(c => c === 'discard_reason' ? `\`${c}\` TEXT` : `\`${c}\` VARCHAR(255)`).join(", ")})`;
+        await discardedConnection.execute(createDiscardedTableSql);
+
+        const discardedSql = `INSERT INTO discarded_readings (${discardedColsStr}) VALUES (${discardedPlaceholders})`;
+        for (const row of discardedRows) {
+          await discardedConnection.execute(discardedSql, discardedCols.map(c => row[c]));
+        }
+      }
+
       await connection.end();
+      await discardedConnection.end();
       console.log(Object.keys(rows[0]));
       console.log(`Imported ${rows.length} rows, discarded ${discarded} rows`);
       if (discarded > 0) {
-        console.log(`Discarded barcodes: ${discardedRows.join(', ')}`);
+        console.log(`Discarded barcodes: ${discardedLog.join(', ')}`);
       }
       console.log("✅ Import complete");
     });

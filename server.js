@@ -8,7 +8,14 @@ const config = {
   host: "localhost",
   user: "root",
   password: "VHPTDB123",
-  database: "vhptest"
+  database: "sdata"
+};
+
+const discardedConfig = {
+  host: "localhost",
+  user: "root",
+  password: "VHPTDB123",
+  database: "fdata"
 };
 
 app.use(express.static('.')); // serve static files
@@ -17,6 +24,18 @@ app.get('/api/data', async (req, res) => {
   try {
     const connection = await mysql.createConnection(config);
     const [rows] = await connection.execute('SELECT * FROM reading_list LIMIT 20'); // limit for demo
+    await connection.end();
+    res.json(rows);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Database error' });
+  }
+});
+
+app.get('/api/discarded', async (req, res) => {
+  try {
+    const connection = await mysql.createConnection(discardedConfig);
+    const [rows] = await connection.execute('SELECT * FROM discarded_readings LIMIT 20'); // limit for demo
     await connection.end();
     res.json(rows);
   } catch (error) {

@@ -86,17 +86,28 @@ numberBtns.forEach(btn => {
 });
 
 // Fetch and populate table data
-fetch('/api/data')
+const pathname = window.location.pathname;
+let apiEndpoint = '/api/data'; // default
+if (pathname.includes('Discarded')) {
+    apiEndpoint = '/api/discarded';
+} else if (pathname.includes('Passed')) {
+    apiEndpoint = '/api/data';
+}
+
+fetch(apiEndpoint)
     .then(response => response.json())
     .then(data => {
-        if (data.length > 0) {
-            const record = data[0]; // Use the first record, or modify to select specific
-            document.querySelectorAll('[data-field]').forEach(span => {
-                const field = span.dataset.field;
-                span.textContent = record[field] || 'N/A';
-            });
-        }
+        const table = document.getElementById('data-table');
+        const rows = table.querySelectorAll('tbody tr');
+        data.forEach((record, index) => {
+            if (rows[index]) {
+                const spans = rows[index].querySelectorAll('[data-field]');
+                spans.forEach(span => {
+                    const field = span.dataset.field;
+                    span.textContent = record[field] || 'N/A';
+                });
+            }
+        });
     })
     .catch(error => console.error('Error fetching data:', error));
 })
-
