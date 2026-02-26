@@ -4,7 +4,7 @@ const mysql = require('mysql2/promise');
 const app = express();
 const port = 3000;
 
-const config = {
+const passConfig = {
   host: "localhost",
   user: "root",
   password: "VHPTDB123",
@@ -18,11 +18,18 @@ const discardedConfig = {
   database: "fdata"
 };
 
+const allConfig = {
+  host: "localhost",
+  user: "root",
+  password: "VHPTDB123",
+  database: "alldata"
+};
+
 app.use(express.static('.')); // serve static files
 
 app.get('/api/data', async (req, res) => {
   try {
-    const connection = await mysql.createConnection(config);
+    const connection = await mysql.createConnection(allConfig);
     const [rows] = await connection.execute('SELECT * FROM reading_list LIMIT 20'); // limit for demo
     await connection.end();
     res.json(rows);
@@ -36,6 +43,19 @@ app.get('/api/discarded', async (req, res) => {
   try {
     const connection = await mysql.createConnection(discardedConfig);
     const [rows] = await connection.execute('SELECT * FROM discarded_readings LIMIT 20'); // limit for demo
+    await connection.end();
+    res.json(rows);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Database error' });
+  }
+});
+
+// Explicit endpoint for passed readings (reading_list)
+app.get('/api/passed', async (req, res) => {
+  try {
+    const connection = await mysql.createConnection(passConfig);
+    const [rows] = await connection.execute('SELECT * FROM reading_list LIMIT 100'); // increase limit for Passed view
     await connection.end();
     res.json(rows);
   } catch (error) {

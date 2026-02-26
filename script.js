@@ -87,11 +87,12 @@ numberBtns.forEach(btn => {
 
 // Fetch and populate table data
 const pathname = window.location.pathname;
-let apiEndpoint = '/api/data'; // default
-if (pathname.includes('Discarded')) {
+let apiEndpoint = '/api/data'; // default for Index/other
+// Use explicit endpoints for Passed/Discarded pages
+if (pathname.toLowerCase().includes('discarded')) {
     apiEndpoint = '/api/discarded';
-} else if (pathname.includes('Passed')) {
-    apiEndpoint = '/api/data';
+} else if (pathname.toLowerCase().includes('passed')) {
+    apiEndpoint = '/api/passed';
 }
 
 fetch(apiEndpoint)

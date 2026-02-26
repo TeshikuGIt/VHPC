@@ -11,7 +11,7 @@ if (!file) {
   process.exit(1);
 }
 
-const config = {
+const passConfig = {
   host: "localhost",
   user: "root",
   password: "VHPTDB123",
@@ -23,6 +23,13 @@ const discardedConfig = {
   user: "root",
   password: "VHPTDB123",
   database: "fdata"
+};
+
+const allConfig = {
+  host: "localhost",
+  user: "root",
+  password: "VHPTDB123",
+  database: "alldata"
 };
 
 function isValidRow(row) {
@@ -38,8 +45,9 @@ function isValidRow(row) {
 }
 
 (async () => {
-  const connection = await mysql.createConnection(config);
+  const passconnection = await mysql.createConnection(passConfig);
   const discardedConnection = await mysql.createConnection(discardedConfig);
+  const allConnection = await mysql.createConnection(allConfig);
 
   const rows = [];
   let discarded = 0;
@@ -75,7 +83,7 @@ function isValidRow(row) {
       const sql = `INSERT INTO reading_list (${cols}) VALUES (${placeholders})`;
 
       for (const row of rows) {
-        await connection.execute(sql, validCols.map(c => row[c]));
+        await allConnection.execute(sql, validCols.map(c => row[c]));
       }
 
       // Handle discarded rows
@@ -84,8 +92,8 @@ function isValidRow(row) {
         const discardedColsStr = discardedCols.map(c => `\`${c}\``).join(", ");
         const discardedPlaceholders = discardedCols.map(() => "?").join(", ");
 
-        const createDiscardedTableSql = `CREATE TABLE IF NOT EXISTS discarded_readings (${discardedCols.map(c => c === 'discard_reason' ? `\`${c}\` TEXT` : `\`${c}\` VARCHAR(255)`).join(", ")})`;
-        await discardedConnection.execute(createDiscardedTableSql);
+        // const createDiscardedTableSql = `CREATE TABLE IF NOT EXISTS discarded_readings (${discardedCols.map(c => c === 'discard_reason' ? `\`${c}\` TEXT` : `\`${c}\` VARCHAR(255)`).join(", ")})`;
+        // await discardedConnection.execute(createDiscardedTableSql);
 
         const discardedSql = `INSERT INTO discarded_readings (${discardedColsStr}) VALUES (${discardedPlaceholders})`;
         for (const row of discardedRows) {
@@ -93,12 +101,27 @@ function isValidRow(row) {
         }
       }
 
-      await connection.end();
+      // if (passRows.length > 0) {
+      //   const passCols = [...validCols];
+      //   const passColsStr = passCols.map(c => `\`${c}\``).join(", ");
+      //   const passPlaceholders = passCols.map(() => "?").join(", ");
+
+      //   // const createDiscardedTableSql = `CREATE TABLE IF NOT EXISTS discarded_readings (${discardedCols.map(c => c === 'discard_reason' ? `\`${c}\` TEXT` : `\`${c}\` VARCHAR(255)`).join(", ")})`;
+      //   // await discardedConnection.execute(createDiscardedTableSql);
+
+      //   const passSql = `INSERT INTO reading_list (${passColsStr}) VALUES (${passPlaceholders})`;
+      //   for (const row of discardedRows) {
+      //     await allConnection.execute(passSql, passCols.map(c => row[c]));
+      //   }
+      // }
+
+      await passconnection.end();
       await discardedConnection.end();
+      await allConnection.end();
       console.log(Object.keys(rows[0]));
-      console.log(`Imported ${rows.length} rows, discarded ${discarded} rows`);
+      console.log(`Imported ${rows.length + discarded} rows, discarded ${discarded} rows, passed ${rows.length} rows.`);
       if (discarded > 0) {
-        console.log(`Discarded barcodes: ${discardedLog.join(', ')}`);
+        console.log(`Discarded barcodes: ${discardedLog.join('\n')}`);
       }
       console.log("✅ Import complete");
     });
