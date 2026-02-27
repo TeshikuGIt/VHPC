@@ -47,15 +47,48 @@ if (searchInput) {
 }
 
 // Dropdown menu
-const dropdownBtn = document.getElementById('dropdown-menu');
-if (dropdownBtn) {
-    dropdownBtn.addEventListener('click', () => {
-        // Toggle dropdown, assuming there's a dropdown element
-        const dropdown = document.getElementById('dropdown');
-        if (dropdown) {
-            dropdown.classList.toggle('show');
-        }
+// const dropdownBtn = document.getElementById('dropdown-menu');
+// if (dropdownBtn) {
+//     dropdownBtn.addEventListener('click', () => {
+//         // Toggle dropdown, assuming there's a dropdown element
+//         const dropdown = document.getElementById('dropdown');
+//         if (dropdown) {
+//             dropdown.classList.toggle('show');
+//         } else {
+//             dropdown.classList.toggle('none');
+//     }});
+// }
+const dropdownButtons = document.querySelectorAll('#SidebtnF, #SidebtnD, #SidebtnC');
+dropdownButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        myFunction(button.id);
     });
+});
+function myFunction(buttonId) {
+  var x = document.getElementById("dropdown-menuF");
+  var y = document.getElementById("dropdown-menuD");
+  var z = document.getElementById("dropdown-menuC");
+  if (buttonId === "SidebtnF") {
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+  if (buttonId === "SidebtnD") {
+    if (y.style.display === "none") {
+      y.style.display = "block";
+    } else {
+      y.style.display = "none";
+    }
+  }
+  if (buttonId === "SidebtnC") {
+    if (z.style.display === "none") {
+      z.style.display = "block";
+    } else {
+      z.style.display = "none";
+    }
+  }
 }
 
 // Arrow buttons

@@ -30,9 +30,21 @@
             padding: 1rem;
             text-decoration: none;
         }
+        #sidebar button {
+            display: flex;
+            color: white;
+            padding: 1rem;
+            text-decoration: none;
+        }
 
         #sidebar a:hover {
             background-color: #3498db;
+        }
+
+        #dropdown-menuC, #dropdown-menuD, #dropdown-menuF {
+        display: none;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
         }
 
         header {
@@ -136,6 +148,10 @@
             margin-top: 3rem;
         }
 
+        #data-table {
+            width: 20%;
+        }
+
         #data-table .view {
             padding: 0.5rem 1rem;
             border: none;
@@ -170,6 +186,12 @@
         }
         #data-table .delete:hover {
             background-color: #c0392b;
+        }
+
+        .GQ img {
+            width: 300px;
+            height: 150px;
+            margin: 0.5rem;
         }
 
         /* Light mode styles */

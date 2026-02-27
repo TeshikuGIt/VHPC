@@ -9,9 +9,9 @@
 </head>
 <body> 
     <div id="sidebar">
-        <button id="dropdown-menu">Filter</button>
-        <button id="dropdown-menu">Databases</button>
-        <button id="dropdown-menu">Contact</button>
+        <button id="dropdown-menu"><a href="Index.html">Filter</a></button>
+        <button id="dropdown-menu"><a href="Database.html">Databases</a></button>
+        <button id="dropdown-menu"><a href="Contact.html">Contact</a></button>
     </div>
     <header>
         <button id="toggle-sidebar">☰</button>
@@ -19,11 +19,19 @@
         <button id="theme-toggle" class="circle">🌙</button>
     </header>
     <main>
-        <div>
-            <button id="refresh">Refresh</button>
-            <input type="text" id="search" placeholder="Search...">
-            <p>Results</p>
-            <button id="list-amount">10</button>
+        <div class="Filter/search">
+            <div class="Front">
+                <input type="datetime-local" id="datetime-search" placeholder="Search by date...">
+                <p>tot</p>
+                <input type="datetime-local" id="datetime-search" placeholder="Search by date/time...">
+            </div>
+            <div class="Middle">
+                <input type="text" id="text-search" placeholder="Search...">
+            </div>
+            <div class="Back">
+                <p>Results</p>
+                <button id="list-amount">10</button>
+            </div>
         </div>
         <table id="data-table">
             <tr>
@@ -299,23 +307,8 @@
                 <td class="action-column-buttons"><button class="edit">Edit</button></td>
                 <td class="action-column-buttons"><button class="delete">Delete</button></td>
             </tr>
-            <tr>
-                <td class="action-column-buttons"><button class="view">View</button></td>
-                <td class="action-column-buttons"><button class="edit">Edit</button></td>
-                <td class="action-column-buttons"><button class="delete">Delete</button></td>
-            </tr>
-            <tr>
-                <td class="action-column-buttons"><button class="view">View</button></td>
-                <td class="action-column-buttons"><button class="edit">Edit</button></td>
-                <td class="action-column-buttons"><button class="delete">Delete</button></td>
-            </tr>
-            <tr>
-                <td class="action-column-buttons"><button class="view">View</button></td>
-                <td class="action-column-buttons"><button class="edit">Edit</button></td>
-                <td class="action-column-buttons"><button class="delete">Delete</button></td>
-            </tr>
         </table>
-        <div>
+        <div class="command/buttons">
             <p>Batch</p>
             <button id="arrow-button-left">←</button>
             <button id="numbers">1</button>
