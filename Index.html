@@ -18,7 +18,7 @@
         </div>
         <button id="SidebtnD">Databases</button>
         <div  id="dropdown-menuD">
-            <button><a href="Index.html">Main</a></button>
+            <button><a href="MainDB.html">Main</a></button>
             <button><a href="Passed.html">Passed</a></button>
             <button><a href="Discarded.html">Discarded</a></button>
         </div>
@@ -41,305 +41,58 @@
         </div>
     </header>
     <main>
-        <div class="Filter/search">
-            <div class="Front">
-                <input type="datetime-local" id="datetime-search" placeholder="Search by date...">
-                <p>tot</p>
-                <input type="datetime-local" id="datetime-search" placeholder="Search by date/time...">
+        <div>
+            <div class="TC">
+                <div>
+                    <h2>Total</h2>
+                    <p>Total: <span id="total-count">0</span></p>
+                </div>
+                <p>Total: <span id="total-count">0</span></p>
             </div>
-            <div class="Middle">
-                <input type="text" id="text-search" placeholder="Search...">
+            <div class="PC">
+                <div>
+                    <h2>Passed</h2>
+                    <p>Passed: <span id="passed-count">0</span></p>
+                </div>
+                <p>Passed: <span id="passed-count">0</span></p>
             </div>
-            <div class="Back">
-                <p>Results</p>
-                <button id="list-amount">10</button>
+            <div class="DC">
+                <div>
+                    <h2>Discarded</h2>
+                    <p>Discarded: <span id="discarded-count">0</span></p>  
+                </div>
+                <p>Discarded: <span id="discarded-count">0</span></p>
             </div>
         </div>
-        <table id="data-table">
-            <tr>
-                <th>Barcode</th>
-                <th>Test time</th>
-                <th>E(lx)</th>
-                <th>Candle E(fc)</th>
-                <th>CCT(K)</th>
-                <th>Duv</th>
-                <th>x</th>
-                <th>y</th>
-                <th>u</th>
-                <th>v</th>
-                <th>SDCM</th>
-                <th>Ra</th>
-                <th>Dominant(nm)</th>
-                <th>Purity(%)</th>
-                <th>Peak(nm)</th>
-                <th>R ratio(%)</th>
-                <th>G ratio(%)</th>
-                <th>B ratio(%)</th>
-                <th>Peak Signal</th>
-                <th>Integral Time(ms)</th>
-                <th class="action-column">Action</th>
-            </tr>
-            <tr data-Barcode="valid_test_0">
-                <td><span data-field="Barcode"></span></td>
-                <td><span data-field="Test time"></span></td>
-                <td><span data-field="E(lx)"></span></td>
-                <td><span data-field="Candle E(fc)"></span></td>
-                <td><span data-field="CCT(K)"></span></td>
-                <td><span data-field="Duv"></span></td>
-                <td><span data-field="x"></span></td>
-                <td><span data-field="y"></span></td>
-                <td><span data-field="u"></span></td>
-                <td><span data-field="v"></span></td>
-                <td><span data-field="SDCM"></span></td>
-                <td><span data-field="Ra"></span></td>
-                <td><span data-field="Dominant(nm)"></span></td>
-                <td><span data-field="Purity(%)"></span></td>
-                <td><span data-field="Peak(nm)"></span></td>
-                <td><span data-field="R ratio(%)"></span></td>
-                <td><span data-field="G ratio(%)"></span></td>
-                <td><span data-field="B ratio(%)"></span></td>
-                <td><span data-field="Peak Signal"></span></td>
-                <td><span data-field="Integral Time(ms)"></span></td>
-                <td class="action-column-buttons"><button class="view"><a href="View.html">View</a></button></td>
-                <td class="action-column-buttons"><button class="edit">Edit</button></td>
-                <td class="action-column-buttons"><button class="delete">Delete</button></td>
-            </tr>
-            <tr data-Barcode="valid test 1">
-                <td><span data-field="Barcode"></span></td>
-                <td><span data-field="Test time"></span></td>
-                <td><span data-field="E(lx)"></span></td>
-                <td><span data-field="Candle E(fc)"></span></td>
-                <td><span data-field="CCT(K)"></span></td>
-                <td><span data-field="Duv"></span></td>
-                <td><span data-field="x"></span></td>
-                <td><span data-field="y"></span></td>
-                <td><span data-field="u"></span></td>
-                <td><span data-field="v"></span></td>
-                <td><span data-field="SDCM"></span></td>
-                <td><span data-field="Ra"></span></td>
-                <td><span data-field="Dominant(nm)"></span></td>
-                <td><span data-field="Purity(%)"></span></td>
-                <td><span data-field="Peak(nm)"></span></td>
-                <td><span data-field="R ratio(%)"></span></td>
-                <td><span data-field="G ratio(%)"></span></td>
-                <td><span data-field="B ratio(%)"></span></td>
-                <td><span data-field="Peak Signal"></span></td>
-                <td><span data-field="Integral Time(ms)"></span></td> 
-                <td class="action-column-buttons"><button class="view">View</button></td>
-                <td class="action-column-buttons"><button class="edit">Edit</button></td>
-                <td class="action-column-buttons"><button class="delete">Delete</button></td>
-            </tr>
-            <tr data-Barcode="valid test 1">
-                <td><span data-field="Barcode"></span></td>
-                <td><span data-field="Test time"></span></td>
-                <td><span data-field="E(lx)"></span></td>
-                <td><span data-field="Candle E(fc)"></span></td>
-                <td><span data-field="CCT(K)"></span></td>
-                <td><span data-field="Duv"></span></td>
-                <td><span data-field="x"></span></td>
-                <td><span data-field="y"></span></td>
-                <td><span data-field="u"></span></td>
-                <td><span data-field="v"></span></td>
-                <td><span data-field="SDCM"></span></td>
-                <td><span data-field="Ra"></span></td>
-                <td><span data-field="Dominant(nm)"></span></td>
-                <td><span data-field="Purity(%)"></span></td>
-                <td><span data-field="Peak(nm)"></span></td>
-                <td><span data-field="R ratio(%)"></span></td>
-                <td><span data-field="G ratio(%)"></span></td>
-                <td><span data-field="B ratio(%)"></span></td>
-                <td><span data-field="Peak Signal"></span></td>
-                <td><span data-field="Integral Time(ms)"></span></td>   
-                <td class="action-column-buttons"><button class="view">View</button></td>
-                <td class="action-column-buttons"><button class="edit">Edit</button></td>
-                <td class="action-column-buttons"><button class="delete">Delete</button></td>
-            </tr>
-            <tr data-Barcode="valid test 1">
-                <td><span data-field="Barcode"></span></td>
-                <td><span data-field="Test time"></span></td>
-                <td><span data-field="E(lx)"></span></td>
-                <td><span data-field="Candle E(fc)"></span></td>
-                <td><span data-field="CCT(K)"></span></td>
-                <td><span data-field="Duv"></span></td>
-                <td><span data-field="x"></span></td>
-                <td><span data-field="y"></span></td>
-                <td><span data-field="u"></span></td>
-                <td><span data-field="v"></span></td>
-                <td><span data-field="SDCM"></span></td>
-                <td><span data-field="Ra"></span></td>
-                <td><span data-field="Dominant(nm)"></span></td>
-                <td><span data-field="Purity(%)"></span></td>
-                <td><span data-field="Peak(nm)"></span></td>
-                <td><span data-field="R ratio(%)"></span></td>
-                <td><span data-field="G ratio(%)"></span></td>
-                <td><span data-field="B ratio(%)"></span></td>
-                <td><span data-field="Peak Signal"></span></td>
-                <td><span data-field="Integral Time(ms)"></span></td>  
-                <td class="action-column-buttons"><button class="view">View</button></td>
-                <td class="action-column-buttons"><button class="edit">Edit</button></td>
-                <td class="action-column-buttons"><button class="delete">Delete</button></td>
-            </tr>
-            <tr data-Barcode="valid test 1">
-                <td><span data-field="Barcode"></span></td>
-                <td><span data-field="Test time"></span></td>
-                <td><span data-field="E(lx)"></span></td>
-                <td><span data-field="Candle E(fc)"></span></td>
-                <td><span data-field="CCT(K)"></span></td>
-                <td><span data-field="Duv"></span></td>
-                <td><span data-field="x"></span></td>
-                <td><span data-field="y"></span></td>
-                <td><span data-field="u"></span></td>
-                <td><span data-field="v"></span></td>
-                <td><span data-field="SDCM"></span></td>
-                <td><span data-field="Ra"></span></td>
-                <td><span data-field="Dominant(nm)"></span></td>
-                <td><span data-field="Purity(%)"></span></td>
-                <td><span data-field="Peak(nm)"></span></td>
-                <td><span data-field="R ratio(%)"></span></td>
-                <td><span data-field="G ratio(%)"></span></td>
-                <td><span data-field="B ratio(%)"></span></td>
-                <td><span data-field="Peak Signal"></span></td>
-                <td><span data-field="Integral Time(ms)"></span></td>    
-                <td class="action-column-buttons"><button class="view">View</button></td>
-                <td class="action-column-buttons"><button class="edit">Edit</button></td>
-                <td class="action-column-buttons"><button class="delete">Delete</button></td>
-            </tr>
-            <tr data-Barcode="valid test 1"> 
-                <td><span data-field="Barcode"></span></td>
-                <td><span data-field="Test time"></span></td>
-                <td><span data-field="E(lx)"></span></td>
-                <td><span data-field="Candle E(fc)"></span></td>
-                <td><span data-field="CCT(K)"></span></td>
-                <td><span data-field="Duv"></span></td>
-                <td><span data-field="x"></span></td>
-                <td><span data-field="y"></span></td>
-                <td><span data-field="u"></span></td>
-                <td><span data-field="v"></span></td>
-                <td><span data-field="SDCM"></span></td>
-                <td><span data-field="Ra"></span></td>
-                <td><span data-field="Dominant(nm)"></span></td>
-                <td><span data-field="Purity(%)"></span></td>
-                <td><span data-field="Peak(nm)"></span></td>
-                <td><span data-field="R ratio(%)"></span></td>
-                <td><span data-field="G ratio(%)"></span></td>
-                <td><span data-field="B ratio(%)"></span></td>
-                <td><span data-field="Peak Signal"></span></td>
-                <td><span data-field="Integral Time(ms)"></span></td>
-                <td class="action-column-buttons"><button class="view">View</button></td>
-                <td class="action-column-buttons"><button class="edit">Edit</button></td>
-                <td class="action-column-buttons"><button class="delete">Delete</button></td>
-            </tr>
-            <tr data-Barcode="valid test 1">
-                <td><span data-field="Barcode"></span></td>
-                <td><span data-field="Test time"></span></td>
-                <td><span data-field="E(lx)"></span></td>
-                <td><span data-field="Candle E(fc)"></span></td>
-                <td><span data-field="CCT(K)"></span></td>
-                <td><span data-field="Duv"></span></td>
-                <td><span data-field="x"></span></td>
-                <td><span data-field="y"></span></td>
-                <td><span data-field="u"></span></td>
-                <td><span data-field="v"></span></td>
-                <td><span data-field="SDCM"></span></td>
-                <td><span data-field="Ra"></span></td>
-                <td><span data-field="Dominant(nm)"></span></td>
-                <td><span data-field="Purity(%)"></span></td>
-                <td><span data-field="Peak(nm)"></span></td>
-                <td><span data-field="R ratio(%)"></span></td>
-                <td><span data-field="G ratio(%)"></span></td>
-                <td><span data-field="B ratio(%)"></span></td>
-                <td><span data-field="Peak Signal"></span></td>
-                <td><span data-field="Integral Time(ms)"></span></td>
-                <td class="action-column-buttons"><button class="view">View</button></td>
-                <td class="action-column-buttons"><button class="edit">Edit</button></td>
-                <td class="action-column-buttons"><button class="delete">Delete</button></td>
-            </tr>
-            <tr data-Barcode="valid test 1">
-                <td><span data-field="Barcode"></span></td>
-                <td><span data-field="Test time"></span></td>
-                <td><span data-field="E(lx)"></span></td>
-                <td><span data-field="Candle E(fc)"></span></td>
-                <td><span data-field="CCT(K)"></span></td>
-                <td><span data-field="Duv"></span></td>
-                <td><span data-field="x"></span></td>
-                <td><span data-field="y"></span></td>
-                <td><span data-field="u"></span></td>
-                <td><span data-field="v"></span></td>
-                <td><span data-field="SDCM"></span></td>
-                <td><span data-field="Ra"></span></td>
-                <td><span data-field="Dominant(nm)"></span></td>
-                <td><span data-field="Purity(%)"></span></td>
-                <td><span data-field="Peak(nm)"></span></td>
-                <td><span data-field="R ratio(%)"></span></td>
-                <td><span data-field="G ratio(%)"></span></td>
-                <td><span data-field="B ratio(%)"></span></td>
-                <td><span data-field="Peak Signal"></span></td>
-                <td><span data-field="Integral Time(ms)"></span></td> 
-                <td class="action-column-buttons"><button class="view">View</button></td>
-                <td class="action-column-buttons"><button class="edit">Edit</button></td>
-                <td class="action-column-buttons"><button class="delete">Delete</button></td>
-            </tr>
-            <tr data-Barcode="valid test 1">
-                <td><span data-field="Barcode"></span></td>
-                <td><span data-field="Test time"></span></td>
-                <td><span data-field="E(lx)"></span></td>
-                <td><span data-field="Candle E(fc)"></span></td>
-                <td><span data-field="CCT(K)"></span></td>
-                <td><span data-field="Duv"></span></td>
-                <td><span data-field="x"></span></td>
-                <td><span data-field="y"></span></td>
-                <td><span data-field="u"></span></td>
-                <td><span data-field="v"></span></td>
-                <td><span data-field="SDCM"></span></td>
-                <td><span data-field="Ra"></span></td>
-                <td><span data-field="Dominant(nm)"></span></td>
-                <td><span data-field="Purity(%)"></span></td>
-                <td><span data-field="Peak(nm)"></span></td>
-                <td><span data-field="R ratio(%)"></span></td>
-                <td><span data-field="G ratio(%)"></span></td>
-                <td><span data-field="B ratio(%)"></span></td>
-                <td><span data-field="Peak Signal"></span></td>
-                <td><span data-field="Integral Time(ms)"></span></td>
-                <td class="action-column-buttons"><button class="view">View</button></td>
-                <td class="action-column-buttons"><button class="edit">Edit</button></td>
-                <td class="action-column-buttons"><button class="delete">Delete</button></td>
-            </tr>
-            <tr data-Barcode="valid test 1">
-                <td><span data-field="Barcode"></span></td>
-                <td><span data-field="Test time"></span></td>
-                <td><span data-field="E(lx)"></span></td>
-                <td><span data-field="Candle E(fc)"></span></td>
-                <td><span data-field="CCT(K)"></span></td>
-                <td><span data-field="Duv"></span></td>
-                <td><span data-field="x"></span></td>
-                <td><span data-field="y"></span></td>
-                <td><span data-field="u"></span></td>
-                <td><span data-field="v"></span></td>
-                <td><span data-field="SDCM"></span></td>
-                <td><span data-field="Ra"></span></td>
-                <td><span data-field="Dominant(nm)"></span></td>
-                <td><span data-field="Purity(%)"></span></td>
-                <td><span data-field="Peak(nm)"></span></td>
-                <td><span data-field="R ratio(%)"></span></td>
-                <td><span data-field="G ratio(%)"></span></td>
-                <td><span data-field="B ratio(%)"></span></td>
-                <td><span data-field="Peak Signal"></span></td>
-                <td><span data-field="Integral Time(ms)"></span></td>
-                <td class="action-column-buttons"><button class="view">View</button></td>
-                <td class="action-column-buttons"><button class="edit">Edit</button></td>
-                <td class="action-column-buttons"><button class="delete">Delete</button></td>
-            </tr>
-        </table>
-        <div class="command/buttons">
-            <p>Batch</p>
-            <button id="arrow-button-left">←</button>
-            <button id="numbers">1</button>
-            <button id="numbers">2</button>
-            <button id="numbers">3</button>
-            <button id="arrow-button-right">→</button>
-        </div>
+        <div class="Hub">
+            <div class="G1">
+                <div class="stats">
+                    <h2>Results per month for a year</h2>
+                    <img src="images/elementor-placeholder-image.png" alt="Placeholder Image">
+                </div>
+                <div class="graph-container">
+                    <h2>Graph</h2>
+                    <img src="images/elementor-placeholder-image.png" alt="Placeholder Image">
+                </div>
+            </div>
+            <div class="data-table-container">
+                <table id="data-table">
+                    <thead>
+                        <tr>
+                            <th>Recent L.E.D Data</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                        <tr><td>Barcode <span data-field="Barcode"></span></td></tr>
+                        <tr><td>E(lx) <span data-field="E(lx)"></span></td></tr>
+                        <tr><td>Candle E(fc) <span data-field="Candle E(fc)"></span></td></tr>
+                        <tr><td>CCT(K) <span data-field="CCT(K)"></span></td></tr>
+                        <tr><td>Duv <span data-field="Duv"></span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>       
     </main>
-
     <footer>
         <p>&copy; 2024 Vision hardware partner. All rights reserved.</p>
     </footer>
