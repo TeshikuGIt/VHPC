@@ -46,18 +46,6 @@ if (searchInput) {
     });
 }
 
-// Dropdown menu
-// const dropdownBtn = document.getElementById('dropdown-menu');
-// if (dropdownBtn) {
-//     dropdownBtn.addEventListener('click', () => {
-//         // Toggle dropdown, assuming there's a dropdown element
-//         const dropdown = document.getElementById('dropdown');
-//         if (dropdown) {
-//             dropdown.classList.toggle('show');
-//         } else {
-//             dropdown.classList.toggle('none');
-//     }});
-// }
 const dropdownButtons = document.querySelectorAll('#SidebtnF, #SidebtnD, #SidebtnC');
 dropdownButtons.forEach(button => {
     button.addEventListener('click', () => {
