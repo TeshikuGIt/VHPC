@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body> 
+    <div id="sidebar">
+        <button><a href="Index.html">Statistics</a></button>
+        <button id="SidebtnF">Filter</button>
+        <div  id="dropdown-menuF">
+            <input type="datetime-local" id="datetime-search" placeholder="Search by date...">
+            <input type="datetime-local" id="datetime-search" placeholder="Search by date...">
+            <input type="datetime-local" id="datetime-search" placeholder="Search by date...">
+        </div>
+        <button id="SidebtnD">Databases</button>
+        <div  id="dropdown-menuD">
+            <button><a href="MainDB.html">Main</a></button>
+            <button><a href="Passed.html">Passed</a></button>
+            <button><a href="Discarded.html">Discarded</a></button>
+        </div>
+        <button id="SidebtnC">Contact</button>
+        <div  id="dropdown-menuC">
+            <button><a href="Contact.html">IT Department</a></button>
+            <button><a href="Contact.html">Human reasources</a></button>
+            <button><a href="Contact.html">Hardware Department</a></button>
+        </div>
+    </div>
+    <header>
+        <div class="Front">
+            <button id="toggle-sidebar">☰</button>
+        </div>
+        <div class="Middle">
+            <h1>CRUD Admin panel</h1>
+        </div>
+        <div class="Back">
+            <button id="theme-toggle" class="circle">🌙</button>
+        </div>
+    </header>
+    <main>
+        <h1>Contact Information</h1>
+        <div class="ContactForm">
+            <div class="contacttext">
+                <h3>Contact Information</h3>
+                <p>For any inquiries or support, please contact us at:</p>
+            </div>
+            <img src="images/Contact.png" alt="Contact Image">
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Vision hardware partner. All rights reserved.</p>
+    </footer>
+</body>
+</html>

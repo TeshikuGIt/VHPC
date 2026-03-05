@@ -9,7 +9,8 @@
 </head>
 <body> 
     <div id="sidebar">
-        <button><a href="Index.html">Statistics</a></button>
+        <img src="images/logo.jpg" alt="Placeholder Image" class="logo">
+        <button><a href="Index.html">Home</a></button>
         <button id="SidebtnF">Filter</button>
         <div  id="dropdown-menuF">
             <input type="datetime-local" id="datetime-search" placeholder="Search by date...">
@@ -94,7 +95,7 @@
                 <td><span data-field="B ratio(%)"></span></td>
                 <td><span data-field="Peak Signal"></span></td>
                 <td><span data-field="Integral Time(ms)"></span></td>
-                <td class="action-column-buttons"><button class="view"><a href="View.html">View</a></button></td>
+                <td class="action-column-buttons"><button class="view"><a href="View.html?id=${record.id}">View</a></button></td>
                 <td class="action-column-buttons"><button class="edit">Edit</button></td>
                 <td class="action-column-buttons"><button class="delete">Delete</button></td>
             </tr>
@@ -119,7 +120,7 @@
                 <td><span data-field="B ratio(%)"></span></td>
                 <td><span data-field="Peak Signal"></span></td>
                 <td><span data-field="Integral Time(ms)"></span></td> 
-                <td class="action-column-buttons"><button class="view">View</button></td>
+                <td class="action-column-buttons"><button class="view"><a href="View.html?id=${record.id}">View</a></button></td>
                 <td class="action-column-buttons"><button class="edit">Edit</button></td>
                 <td class="action-column-buttons"><button class="delete">Delete</button></td>
             </tr>

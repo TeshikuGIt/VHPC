@@ -104,10 +104,14 @@
             background-color: #169e03;
         }
 
-        #dropdown-menuC, #dropdown-menuD, #dropdown-menuF {
-        display: none;
-        padding-top: 0.5rem;
-        padding-bottom: 0.5rem;
+        #dropdown-menuC, #dropdown-menuD, #dropdown-menuF, #dropdown-menuF1, #dropdown-menuF2 {
+            display: none;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+
+        #dropdown-menuF input, #dropdown-menuF1 input, #dropdown-menuF2 input {
+            padding: 0.5rem;
         }
 
         #sidebar.open ~ header {
@@ -115,7 +119,7 @@
         }
 
         #sidebar.open ~ main {
-            margin-left: 350px;
+            margin-left: 330px;
         }
 
         header h1 {
@@ -156,6 +160,12 @@
         nav a {
             text-decoration: none;
             margin-right: 2rem;
+        }
+
+        .center{
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         main {
@@ -231,7 +241,7 @@
             padding: 1rem;
             border-radius: 4px;
             width: 850px;
-            height: 40vh;
+            height: 30vh;
         }
 
         .graph-container h2, .stats h2 {
@@ -311,6 +321,41 @@
             width: 300px;
             height: 150px;
             margin: 0.5rem;
+        }
+
+        .ContactForm {
+            display: flex;
+            flex-direction: row;
+            justify-content: left;
+            gap: 0.5rem;
+            width: 80%;
+        }
+
+        .ContactForm button {
+            margin-top: 0.5rem;
+            width: 100px;
+        }
+
+        .ContactForm img {
+            width: 200px;
+            height: 200px;
+        }
+
+        .ContactForm2 {
+            display: flex;
+            flex-direction: row-reverse;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .ContactForm2 img {
+            width: 200px;
+            height: 200px;
+        }
+
+        .Contacttext {
+            display: flex;
+            flex-direction: column;
         }
 
         /* Light mode styles */

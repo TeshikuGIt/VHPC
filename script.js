@@ -46,7 +46,7 @@ if (searchInput) {
     });
 }
 
-const dropdownButtons = document.querySelectorAll('#SidebtnF, #SidebtnD, #SidebtnC');
+const dropdownButtons = document.querySelectorAll('#SidebtnF, #SidebtnF1, #SidebtnF2, #SidebtnD, #SidebtnC');
 dropdownButtons.forEach(button => {
     button.addEventListener('click', () => {
         myFunction(button.id);
@@ -54,6 +54,8 @@ dropdownButtons.forEach(button => {
 });
 function myFunction(buttonId) {
   var x = document.getElementById("dropdown-menuF");
+  var x1 = document.getElementById("dropdown-menuF1");
+  var x2 = document.getElementById("dropdown-menuF2");
   var y = document.getElementById("dropdown-menuD");
   var z = document.getElementById("dropdown-menuC");
   if (buttonId === "SidebtnF") {
@@ -63,6 +65,21 @@ function myFunction(buttonId) {
       x.style.display = "none";
     }
   }
+  if (buttonId === "SidebtnF1") {
+    if (x1.style.display === "none") {
+      x1.style.display = "block";
+    } else {
+      x1.style.display = "none";
+    }
+  }
+  if (buttonId === "SidebtnF2") {
+    if (x2.style.display === "none") {
+      x2.style.display = "block";
+    } else {
+      x2.style.display = "none";
+    }
+  }
+
   if (buttonId === "SidebtnD") {
     if (y.style.display === "none") {
       y.style.display = "block";
@@ -132,4 +149,26 @@ fetch(apiEndpoint)
         });
     })
     .catch(error => console.error('Error fetching data:', error));
+
+    if (window.location.pathname.toLowerCase().includes('view')) {
+
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+
+    if (!id) return;
+
+    fetch(`/api/data/${id}`)
+        .then(response => response.json())
+        .then(record => {
+
+            const spans = document.querySelectorAll('[data-field]');
+            spans.forEach(span => {
+                const field = span.dataset.field;
+                span.textContent = record[field] || 'N/A';
+            });
+
+            document.getElementById('qr-image').src = `/api/qr/${id}`;
+        })
+        .catch(error => console.error('Error loading record:', error));
+}
 })
